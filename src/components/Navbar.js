@@ -17,12 +17,9 @@ export const Navbar = () => {
                         </Typography>
                     </Link>
 
-                    <Link to="/About" style={{textDecoration: 'none', color: '#FFF'}}>
-                        <Button color="inherit">About</Button>
+                    <Link to="/Login" style={{textDecoration: 'none', color: '#FFF'}}>
+                        <Button color="inherit">Login</Button>
                     </Link>
-                    <Button color="inherit" onClick={() => {
-                        console.log('click')
-                    }}>Login</Button>
                 </Toolbar>
             </AppBar>
         </div>

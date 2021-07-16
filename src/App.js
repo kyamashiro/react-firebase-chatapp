@@ -2,22 +2,22 @@ import './App.css';
 import Navbar from "./components/Navbar";
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import {Home} from "./pages/home";
-import {About} from "./pages/about";
+import {Login} from "./pages/login";
 import {Container} from "@material-ui/core";
+import {AuthProvider} from "contexts/AuthContext"
 
 function App() {
     return (
         <div className="App">
-            <Container maxWidth="xl">
+            <AuthProvider>
                 <Router>
-                    <div>
+                    <Container maxWidth="xl">
                         <Navbar/>
-                        <hr/>
                         <Route exact path='/' component={Home}/>
-                        <Route path='/About' component={About}/>
-                    </div>
+                        <Route path='/Login' component={Login}/>
+                    </Container>
                 </Router>
-            </Container>
+            </AuthProvider>
         </div>
     );
 }
