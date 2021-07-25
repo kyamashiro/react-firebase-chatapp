@@ -1,33 +1,41 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useAuth } from "contexts/AuthContext";
+import { ChatUI } from "../../components/ChatUI";
+import { Box, Grid, Typography } from "@material-ui/core";
 
 export const Home = () => {
   const { user } = useAuth();
 
-  useEffect(() => {
-    console.log(user);
-  });
-
-  const props = {
-    user,
-  };
+  // const props = {
+  //   user,
+  // };
 
   return (
-    <div>
-      <h1>Home</h1>
-      {!!user || <p>未ログイン</p>}
-      {!!user && <SignIn {...props} />}
-    </div>
+    <Box mb={8}>
+      <Grid container justifyContent={"center"} alignItems={"center"}>
+        {!!user || (
+          <Typography variant={"h6"}>
+            チャットを利用するにはログインしてください
+          </Typography>
+        )}
+        {!!user && (
+          <React.Fragment>
+            {/* <SignIn {...props} /> */}
+            <ChatUI />
+          </React.Fragment>
+        )}
+      </Grid>
+    </Box>
   );
 };
 
-const SignIn = (props) => {
-  return (
-    <div>
-      <p>ログイン中</p>
-      <p>{props.user.displayName}</p>
-      <p>{props.user.email}</p>
-      <p>{props.user.uid}</p>
-    </div>
-  );
-};
+// const SignIn = (props) => {
+//   return (
+//     <div>
+//       <Typography>ログイン中</Typography>
+//       <p>{props.user.displayName}</p>
+//       <p>{props.user.email}</p>
+//       <p>{props.user.uid}</p>
+//     </div>
+//   );
+// };

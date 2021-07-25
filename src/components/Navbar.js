@@ -15,7 +15,7 @@ import { auth } from "firebase/init";
 export const Navbar = () => {
   const { user } = useAuth();
   return (
-    <div>
+    <Box mb={8}>
       <AppBar position="static">
         <Toolbar>
           <Grid item sm={2}>
@@ -30,7 +30,7 @@ export const Navbar = () => {
                 to="/Login"
                 style={{ textDecoration: "none", color: "#FFF" }}
               >
-                <Button color="inherit">SignIn</Button>
+                <Button color="inherit">ログイン</Button>
               </Link>
             )}
             {/* ログイン状態 */}
@@ -54,7 +54,7 @@ export const Navbar = () => {
                       auth.signOut();
                     }}
                   >
-                    SignOut
+                    ログアウト
                   </Button>
                 </Link>
               </Grid>
@@ -62,7 +62,7 @@ export const Navbar = () => {
           </Grid>
         </Toolbar>
       </AppBar>
-    </div>
+    </Box>
   );
 };
 
