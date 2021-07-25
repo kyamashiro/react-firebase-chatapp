@@ -1,14 +1,14 @@
 import React from 'react';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-import firebase from "firebase/init";
+import firebase, {auth} from "firebase/init";
 
 const uiConfig = {
     signInFlow: 'popup',
-    signInSuccessUrl: '/signedIn',
+    signInSuccessUrl: '/',
     signInOptions: [
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-        firebase.auth.FacebookAuthProvider.PROVIDER_ID,
     ],
+
 };
 
 export const Login = () => {
@@ -16,7 +16,7 @@ export const Login = () => {
         <div>
             <h1>My App</h1>
             <p>Please sign-in:</p>
-            <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()}/>
+            <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth}/>
         </div>
     );
 }

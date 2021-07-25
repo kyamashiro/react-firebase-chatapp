@@ -16,7 +16,6 @@ export function AuthProvider({children}) {
     }
 
     useEffect(() => {
-        // Firebase Authのメソッド。ログイン状態が変化すると呼び出される
         auth.onAuthStateChanged(user => {
             setUser(user);
             setLoading(false)
