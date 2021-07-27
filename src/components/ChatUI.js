@@ -40,7 +40,7 @@ const saveMessage = (user, messageText) => {
       name: user.displayName,
       text: messageText,
       profilePicUrl: user.photoURL,
-      timestamp: firebase.firestore.Timestamp.now(),
+      timestamp: firebase.firestore.Timestamp.fromDate(new Date()),
     })
     .catch(function (error) {
       console.error("Error writing new message to database", error);
@@ -59,8 +59,8 @@ export const ChatUI = () => {
       const query = firebase
         .firestore()
         .collection("messages")
-        .orderBy("timestamp", "desc")
-        .limit(12);
+        .orderBy("timestamp", "asc")
+        .limit(10);
 
       query.onSnapshot(function (snapshot) {
         const data = snapshot.docs.map((doc) => doc.data());
@@ -129,6 +129,7 @@ export const ChatUI = () => {
                   <InputLabel htmlFor="message-input">Message...</InputLabel>
                   <Input
                     id="message-input"
+                    value={text}
                     onChange={(event) => {
                       console.log(event.target.value);
                       setText(event.target.value);
